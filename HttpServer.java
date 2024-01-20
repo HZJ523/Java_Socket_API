@@ -1,7 +1,6 @@
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.ServerSocket;
-import java.net.InetAddress;
 
 public class HttpServer {
     String hostname = "localhost";//服务器主机名
@@ -16,7 +15,7 @@ public class HttpServer {
             serverSocket.bind(new InetSocketAddress(hostname, port));
             System.out.println("---->>>> 服务器已经启动 <<<<----");
             System.out.println("服务器正在监听端口：" + serverSocket.getLocalPort());
-
+            //循环读取客户端请求
             while (true) {
                 try {
                     Socket socket = serverSocket.accept();

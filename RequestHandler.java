@@ -1,6 +1,9 @@
 import java.io.*;
 import java.net.Socket;
 
+/**
+ * 服务器对客户端请求进行处理的类
+ */
 public class RequestHandler extends Thread {
     private final Socket socket;
 
@@ -31,7 +34,7 @@ public class RequestHandler extends Thread {
      * @return HTTP请求字符串
      */
     public String readRequest(Socket socket) throws IOException {
-        InputStream inputStream = socket.getInputStream();
+        InputStream inputStream = socket.getInputStream();//创建输入流，读取socket输入流内容
         int size = inputStream.available();
         byte[] requestBuffer = new byte[size];
         inputStream.read(requestBuffer);
