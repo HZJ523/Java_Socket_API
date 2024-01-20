@@ -30,14 +30,15 @@ public class HttpClient {
      * @param url
      * @return 响应报文
      */
-    public static String sendRequest(Socket socket, String url) throws IOException {
+    public static String sendRequest(Socket socket, String url) throws IOException{
 
         //TODO:创建HTTP请求 实现GET/POST两种请求报文
         StringBuffer stringBuffer = new StringBuffer("GET1 " + url + " HTTP/1.1\r\n");//仅测试，需修改
 
         //发送HTTP请求
         OutputStream outputStream = socket.getOutputStream();//创建输出流
-        outputStream.write(stringBuffer.toString().getBytes());//HTTP请求写入输出流
+        outputStream.write(stringBuffer.toString().getBytes("UTF-8"));//HTTP请求写入输出流
+        outputStream.flush();
 
         //接受响应数据
         InputStream inputStream = socket.getInputStream();//获得服务器响应报文
