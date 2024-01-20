@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.*;
+import java.nio.charset.StandardCharsets;
 
 public class HttpClient {
     public void start() throws IOException {
@@ -20,7 +21,6 @@ public class HttpClient {
         handleResponse(response);
 
         socket.close();
-        System.exit(0);
     }
 
 
@@ -37,7 +37,7 @@ public class HttpClient {
 
         //发送HTTP请求
         OutputStream outputStream = socket.getOutputStream();//创建输出流
-        outputStream.write(stringBuffer.toString().getBytes("UTF-8"));//HTTP请求写入输出流
+        outputStream.write(stringBuffer.toString().getBytes(StandardCharsets.UTF_8));//HTTP请求写入输出流
         outputStream.flush();
 
         //接受响应数据
